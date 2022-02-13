@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI 拖动（Draggable） - 默认功能</title>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  
+  <style>
+  #draggable { width: 150px; height: 150px; padding: 0.5em; 
+      background-color: cadetblue}
+  #outer{
+        width: 500px;
+      height: 500px;
+      border:2px solid red;
+   }  
+  </style>
+  <script>
+  $(function() {
+    $( "#draggable" ).draggable({
+       // axis : 'x' //限制於X軸
+       //containment : [0,0,200,200] //限制區域
+        //containment : "parent" //"document" or "window"
+        //cursor : 'pointer' //crosshair -> 十字架
+       // opacity: 0.35 
+        scroll: false
+    });
+  });
+  </script>
+</head>
+<body>
+ 
+<div id="outer">    
+<div id="draggable">
+</div>
+    </div> 
+ 
+</body>
+</html>

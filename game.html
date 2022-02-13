@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Carousel Template for Bootstrap</title>
+    <link href="Step4/style.css" rel="stylesheet"> 
+  </head>
+  <body>
+      
+<style>
+    body{
+        background-color: #232323;
+        font-family: 微軟正黑體;
+        color: white;
+    }
+    #body{
+        margin-top: 100px;
+        border:5px solid white;
+        width: 800px;
+        height:500px;
+        display: inline-flex;
+        align-items: flex-start;
+    }
+    #nav{
+        border-top:4px solid white;
+        border-bottom:4px solid white;
+        display: inline-flex;
+        justify-content: center;
+        margin: auto;
+        width: 80%;
+    }
+    .but{
+        padding: 10px 20px;
+        width: 50px;
+        height: 25px;
+        font-size: 150%;
+       
+    }
+    .but:hover{
+        cursor: pointer;
+        color: tomato;
+        font-weight: bolder;
+    }
+    #play-how{
+        border:1px solid yellow;
+        width: 400px;
+        height:500px;
+    }
+    .content{
+        width: 250px;
+    }
+    .close{
+        font-size: 150%;
+        font-weight: bolder;
+    }
+    .close:hover{
+        color:red;
+        cursor: pointer;
+    }
+    #prompt{
+        position: absolute;
+        width: 800px;
+        display: inline-flex;
+        justify-content: center;
+        visibility:hidden;
+    }
+</style>  
+<!---------------------end--------------------------------------------------------------->
+      <div id="game">
+      <div id="status" class="window">
+          <div class="status-item-block">
+              <img src="Step4/new_img/realKey.png">
+              <div class='num'>X5</div>
+          </div>
+          <div class="status-item-block">
+              <img src="Step4/new_img/treasure.png">
+              <div class='num'>X0</div>
+          </div>
+          <div class="status-item-block">
+              血量：
+              <div id='hp-outer' class='outer'><div id='hp-inner' class="inner"></div></div>
+              <div id="hp">100/100</div>
+          </div>
+          <div class="status-item-block">
+            魔力：
+              <div id='mp-outer' class="outer"><div id='mp-inner' class="inner"></div></div>
+              <div id="mp">100/100</div>
+          </div>
+      </div>      
+      <div id="canvas">
+          <canvas id="myCanvas" width="1200" height="600"></canvas>
+          <canvas id ="item" width="1200" height="600"></canvas>
+          <div id="floating">
+            <div id="gameOver"></div>
+            <div id="dialogFin">
+                <p>用3個小餅乾換廣志?</p>
+                <button id="fin_yes" autofocus='autofocus'>好啊</button>
+                <button id="fin_no">不要啦</button>
+            </div>
+            <div id="bag">
+                <div id="head"><span>[esc]</span><span>背包</span></div>
+                <div id="content"></div>
+            </div>    
+          </div>
+    
+      </div>
+      <div id="line" class="window">
+          用鑰匙打開箱子，集滿3個小餅乾就可去救廣志喔!!<br>
+          玩法:方向鍵+Z 可打開箱子<br>
+      </div>
+      
+      
+      </div>      
+      <!------------------------------------------------------>
+      
+      <div id="body">
+            <div id="nav">
+                <div id="how" class="but">玩法</div>
+                <div id='start' class="but">開始</div>
+            </div>
+          
+          <div id="prompt">
+            <div id="play-how">
+                <span class="close">CLOSE</span>
+                <span class='title'>玩法</span><br>
+                <div class='content'>    
+                    方向鍵控制人物移動<br>
+                    方向鍵+Z 可打開箱子<br>
+                    方向鍵+X 可發動攻擊<br>
+                    <br>
+                    需要鑰匙才能打開箱子<br>
+                    攻擊敵人以蒐集鑰匙<br>
+                    <br>
+                    集滿3個小餅乾即可救出廣志<br>
+                    鑰匙用完或血量歸0時即結束遊戲
+                </div>   
+            </div> 
+          </div>      
+          </div>
+
+    <!-------------------------------------------------------------->
+    <div id="all">
+        <div id="select-role">
+            <div>選擇角色</div>
+            <ul>
+                <li><img src="Step4/new_img/roles/1.png"></li>
+                <li><img src="Step4/new_img/roles/2.png"></li>
+                <li><img src="Step4/new_img/roles/3.png"></li>
+                <li><img src="Step4/new_img/roles/4.png"></li>
+            </ul>    
+            按空白鍵進入遊戲
+            <div id="show">
+            </div>  
+        </div>
+    </div>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="jquery-ui/jquery-ui.js"></script>  
+    <script src="Step4/data.js"></script>  
+    <script src="Step4/control.js"></script>  
+    <script src="Step4/before.js"></script>  
+    <script>
+    $(document).ready(()=>{
+        $("#how").on("click",()=>{
+          $("#nav").hide();
+            $("#prompt").css("visibility","visible");
+            
+        })
+        $(".close").on("click",()=>{
+            $("#prompt").css("visibility","hidden");
+            $("#nav").fadeIn(0);
+        })
+        $("#start").click(function(){
+            $("#all").show();
+            $("#body").hide();
+        })    
+    })
+</script>      
+      
+  </body>
+</html>

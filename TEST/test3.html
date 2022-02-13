@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>    
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+        canvas{
+        
+        }
+    </style>
+    
+<script>
+$(document).ready(function(){
+    ctx = $("#my")[0].getContext("2d")
+    ctx.fillStyle = 'black';
+    ctx.scale(10,10)
+    ctx.fillRect(0,0,8,8)
+    ctx.fillStyle = "yellow"
+   // ctx.scale(0.5,0.5)
+})    
+var map = [
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,1,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,1,0,0],
+    [0,0,1,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0]
+]
+var posX = 4
+var posY = 2
+var dir = 1
+var out =1
+var updown = 1
+var err = 0;
+function move(){
+    var ox = posX
+    var oy = posY
+    var nx = ox+dir*out
+    var ny = oy
+
+    if(ny == 8 || ny == -1){//final
+        ctx.fillRect(ox, oy-1, 1, 1)
+        updown = -updown
+        posY += updown
+        return;
+    }
+    else if(nx == 8 || nx == -1){//wall
+        posX = ox
+        posY += updown;
+        dir = -dir
+        out = 0
+        err = 1;
+        
+    }
+    
+        else if(map[ny][nx] != 0){//obs
+            posX = ox
+            out = 0
+            posY +=updown;
+            err = 1
+            
+        }
+       else{ 
+            out = 1
+            posX = nx
+            posY = ny
+         
+    
+
+    if(err == 1){
+        ctx.clearRect(ox, oy-updown ,1 ,1)
+        err = 0
+    }
+    ctx.clearRect(ox, oy ,1 ,1)
+    ctx.fillRect(nx, ny, 1, 1)
+       }
+}
+    
+var s = setInterval(move,100)
+$(document).keydown(function(){
+    clearInterval(s)
+    //move()
+})
+</script>    
+    
+</head>   
+<body>
+    <canvas id="my">
+    
+    </canvas>
+</body>
+</html>    

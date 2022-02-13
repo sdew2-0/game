@@ -1,0 +1,1 @@
+var currentScript = 0;

@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+</body>    
+    
+<script>
+    var data = [100, 80]
+    var arr = [];
+    function person(value){
+        this.value = value,
+        this.gender = value/2,
+        this.act = function(){
+            console.log(value++);
+        },
+        this.test = function(){
+          this.tt = setInterval(this.act,1000)  
+        }
+        this.end = function(){
+            clearInterval(this.tt)
+        }
+    }
+    
+    $(data).each(function(i ,ele){
+        put(ele);
+    })
+    
+
+    for(var i in arr){
+        arr[i].test();
+    }
+    
+    function put(n){
+        arr.push(new person(n));
+    }
+    
+    $(document).keydown(()=>{
+        arr[0].end();
+        arr[1].end();
+        arr.splice(1,1)
+        arr.splice(0,1)
+        console.log(arr)
+    });
+    </script>    
+</html>

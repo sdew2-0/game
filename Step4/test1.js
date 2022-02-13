@@ -1,0 +1,13 @@
+$(document).ready(function(){
+    $("body").append("test1");
+    $.ajax({
+    url:"Step4/test2.js",
+    datatype:'script',
+    success:function(){
+        alert(1);
+    },
+    error:function(msg){
+        console.log(msg)
+    }
+});
+});

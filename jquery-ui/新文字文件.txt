@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+<head>
+<link href="jquery-ui.min.css">
+<script src="jquery-ui.min.js">
+<script src="jquery.js">
+</head>
+<body>
+<div></div>
+</body>
+</html>

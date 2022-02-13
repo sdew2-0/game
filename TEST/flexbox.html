@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+    <style>
+        #container{
+            width: 20%;
+            height: 300px;
+            border: 3px solid gray;
+            display:inline-flex;
+            flex-wrap: nowrap;
+            justify-content:center;
+            align-items: center;
+            display: none;
+            
+        }
+        .flex{
+            border:2px solid;
+            width: 150px;
+            height: 150px;
+            flex-basis: 10px;
+            
+        }
+        #div1{
+            border-color: red;
+            flex-grow: 1;
+
+        }
+        #div2{
+            border-color: blue;
+            flex-grow: 2;
+        }
+        #div3{
+            border-color: green;
+            flex-grow: 3;
+        }
+        
+        #test2 div{
+            margin: 200px;
+            width:200px;
+            height:200px;
+            border:2px solid gray;
+        }
+    </style>    
+</head>
+<body>
+    <div id="container">
+    <div class="flex" id="div1">1</div>
+    <div class="flex" id="div2">2</div>
+    <div class="flex" id="div3">3</div>
+    <div class="flex" id="div4">4</div>    
+    </div>
+    
+    <div id="test2">
+        <div></div>
+    
+    </div>
+    <p></p>
+    <script>
+        var s=false;
+        var x,y;
+        var i=0;
+       $(document).ready(function(){
+            
+        });
+        //$(document).mousemove
+       $("#test2 div").mousedown(function(event){
+            s=true;
+           console.log(event)
+        
+        })
+        $("#test2 div").mouseup(function(){
+            s=false
+        
+        });
+        $(document).mousemove(function(event){
+            if(s == false){
+                return;
+            }
+           // console.log(event.pageX+" --"+event.pageY)
+            x=event.pageY-50
+            y=event.pageX-100
+            
+            sss()
+        })
+
+        function sss(){
+            $("#test2 div").offset({top:x,left:y});
+           
+        }
+    </script>
+</body>    
+</html>
